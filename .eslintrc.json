@@ -5,8 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
-        "plugin:react/jsx-runtime"
+        "airbnb"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -16,16 +15,15 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "prettier"
+        "react"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        // "prettier/prettier": "error",
+        "comma-dangle": ["error", "never"],
         "import/prefer-default-export": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/react-in-jsx-scope": "off",
         "no-use-before-define": "off",
         "space-before-function-paren": "off"
     }
-    
 }
