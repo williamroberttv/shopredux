@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import { api } from '../../services/api';
 import { ProductsList } from './styles';
 
-export function Home() {
+function Home(props) {
   const [products, setProducts] = useState([]);
+
+  const handleAddToCart = (product) => {
+    const { dispatch } = props;
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      product
+    });
+  };
 
   useEffect(async () => {
     const { data } = await api('products');
@@ -20,7 +30,7 @@ export function Home() {
             <strong>{product.title}</strong>
             <span>{product.price}</span>
 
-            <button type="button">
+            <button type="button" onClick={() => handleAddToCart(product)}>
               <div>
                 <MdShoppingCart size={16} />
               </div>
@@ -34,3 +44,5 @@ export function Home() {
     </ProductsList>
   );
 }
+
+export default connect()(Home);
