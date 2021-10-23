@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import { api } from '../../services/api';
 import { ProductsList } from './styles';
 
-function Home(props) {
+export default function Home() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
-    const { dispatch } = props;
-
     dispatch({
       type: 'ADD_TO_CART',
       product
@@ -45,4 +44,4 @@ function Home(props) {
   );
 }
 
-export default connect()(Home);
+// export default connect()(Home);
